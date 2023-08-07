@@ -2,7 +2,7 @@ package ru.netology.web.page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.netology.pdd.data.DataHelper;
+import ru.netology.web.data.DataHelper;
 
 import java.time.Duration;
 
@@ -21,9 +21,9 @@ public class TransferPage {
         transferHead.shouldBe(Condition.visible);
     }
 
-    public DashboardPage makeValidTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
+    public DashBoardPage makeValidTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
         makeTransfer(amountToTransfer, cardInfo);
-        return new DashboardPage();
+        return new DashBoardPage();
     }
 
     public void makeTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {

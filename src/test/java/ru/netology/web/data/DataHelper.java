@@ -1,28 +1,33 @@
 package ru.netology.web.data;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import java.util.Random;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+// Данный класс как пример генерации тестовых данных
+// Вместа передачи данных через сценарий (feature)
+// можно вызывать подобные методы непосредственно в шагах сценария (steps)
+
 public class DataHelper {
-    private DataHelper() {
-    }
 
     public static VerificationCode getVerificationCode() {
         return new VerificationCode("12345");
     }
 
     public static AuthInfo getAuthInfo() {
-        return new AuthInfo("viktor", "qwerty123");
+        return new AuthInfo("vasya", "qwerty123");
     }
 
     public static CardInfo getFirstCardInfo() {
-        return new CardInfo("7894 0000 4567 1188", "47oc1q2h-v781-62y1-5746-905o4g2t32d4");
+        return new CardInfo("5559 0000 0000 0001", "92df3f1c-a033-48e6-8390-206f6b1f56c0");
 
     }
 
     public static CardInfo getSecondCardInfo() {
-        return new CardInfo("7894 0000 4567 1188", "3j8s6e6l-856c-5s5g-3461-67b3r375079t");
+        return new CardInfo("5559 0000 0000 0002", "0f3f5c2a-249e-4c3d-8287-09f7a039391d");
     }
 
     public static int generateValidAmount(int balance) {
