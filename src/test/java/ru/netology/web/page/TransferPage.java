@@ -21,7 +21,7 @@ public class TransferPage {
         transferHead.shouldBe(Condition.visible);
     }
 
-    public DashBoardPage makeValidTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
+    public DashBoardPage makeValidTransfer(int amountToTransfer, DataHelper.CardInfo cardInfo) {
         makeTransfer(amountToTransfer, cardInfo);
         return new DashBoardPage();
     }
