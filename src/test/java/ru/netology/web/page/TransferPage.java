@@ -1,11 +1,12 @@
 package ru.netology.web.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.web.data.DataHelper;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -18,10 +19,10 @@ public class TransferPage {
     private final SelenideElement errorMessage = $("[data-test-id=action-cancel]");
 
     public TransferPage() {
-        transferHead.shouldBe(Condition.visible);
+        transferHead.shouldBe(visible);
     }
 
-    public DashBoardPage makeValidTransfer(int amountToTransfer, DataHelper.CardInfo cardInfo) {
+    public DashBoardPage makeValidTransfer(String amountToTransfer, DataHelper.CardInfo cardInfo) {
         makeTransfer(amountToTransfer, cardInfo);
         return new DashBoardPage();
     }
@@ -33,6 +34,6 @@ public class TransferPage {
     }
 
     public void findErrorMessage(String expectedText) {
-        errorMessage.shouldHave(Condition.exactText(expectedText), Duration.ofSeconds(15)).shouldBe(Condition.visible);
+        errorMessage.shouldHave(exactText(expectedText), Duration.ofSeconds(15)).shouldBe(visible);
     }
 }
