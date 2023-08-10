@@ -9,8 +9,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class DashBoardPage {
-    private final String balanceStringStart = "баланс: ";
-    private final String balanceStringFinish = " р.";
+    private final String balanceStart = "баланс: ";
+    private final String balanceFinish = " р.";
     private final SelenideElement heading = $("[data-test-id=dashboard]");
     private final ElementsCollection cards = $$(".list__item div");
 
@@ -19,8 +19,7 @@ public class DashBoardPage {
     }
 
     public int getCardBalance(DataHelper.CardInfo cardInfo) {
-        String text;
-        text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
+        var text = cards.findBy(text(cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
 
@@ -35,9 +34,9 @@ public class DashBoardPage {
     }
 
     private int extractBalance(String text) {
-        var start = text.indexOf(balanceStringStart);
-        var finish = text.indexOf(balanceStringFinish);
-        var value = text.substring(start + balanceStringStart.length(), finish);
+        var start = text.indexOf(balanceStart);
+        var finish = text.indexOf(balanceFinish);
+        var value = text.substring(start + balanceStart.length(), finish);
         return Integer.parseInt(value);
     }
 }
